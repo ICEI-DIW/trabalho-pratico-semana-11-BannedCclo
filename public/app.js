@@ -1,8 +1,4 @@
-import { movieList } from "./api.js";
-
 const container = document.querySelector("#movies");
-
-console.log(movieList);
 
 function createCard(title, poster, id) {
   const card = document.createElement("div");
@@ -16,8 +12,15 @@ function createCard(title, poster, id) {
   container.appendChild(card);
 }
 
-window.onload = () => {
-  movieList.forEach((movie) => {
-    createCard(movie.nome, movie.poster, movie.id);
-  });
+window.onload = async () => {
+  try {
+    const response = await fetch("../db/db.json");
+    const data = await response.json();
+    console.log(data);
+    data.movieList.forEach((movie) => {
+      createCard(movie.nome, movie.poster, movie.id);
+    });
+  } catch (error) {
+    console.error("Failed to load movie list:", error);
+  }
 };

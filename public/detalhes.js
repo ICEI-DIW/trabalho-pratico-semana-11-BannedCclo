@@ -1,19 +1,25 @@
-import { movieList } from "./api.js";
-
 const main = document.querySelector("#detalhes");
 
-let params = new URLSearchParams(location.search);
-const movie = movieList.find(function (movie) {
-  return movie.id == params.get("id");
-});
+window.onload = async () => {
+  try {
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
 
-function loadData() {
-  main.innerHTML = `
-    <div id="poster">
-        <img
-          src="${movie.poster}"
-          alt=""
-        />
+    // Busca todos os filmes
+    const response = await fetch("http://localhost:3000/movieList");
+    const data = await response.json();
+
+    // Encontra o filme pelo ID
+    const movie = data.find((movie) => movie.id == id);
+
+    if (!movie) {
+      main.innerHTML = "<p>Filme não encontrado.</p>";
+      return;
+    }
+
+    main.innerHTML = `
+      <div id="poster">
+        <img src="${movie.poster}" alt="Capa de ${movie.nome}" />
       </div>
       <div id="data">
         <h1>${movie.nome}</h1>
@@ -34,9 +40,9 @@ function loadData() {
           <h3>${movie.lancamento}</h3>
         </div>
       </div>
-      `;
-}
-
-window.onload = () => {
-  loadData();
+    `;
+  } catch (error) {
+    console.error("Erro ao carregar os detalhes do filme:", error);
+    main.innerHTML = "<p>Erro ao carregar os dados do filme.</p>";
+  }
 };

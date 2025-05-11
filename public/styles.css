@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  background-color: #eee;
+}
+
+header {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  background-color: #ccc;
+}
+
+header > h1 {
+  font-size: 2em;
+}
+
+ul {
+  gap: 10px;
+
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+}
+
+main > img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+main {
+  text-align: center;
+}
+
+#grid {
+  width: 100%;
+  padding: 20px;
+}
+
+.card-filme {
+  position: relative;
+  aspect-ratio: 2/3;
+  background-color: #333;
+  color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.card-filme > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-filme > h1 {
+  background-color: rgba(0, 0, 0, 0.6);
+  line-height: 2;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  font-size: 1.5em;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #ccc;
+  width: 100%;
+}
+
+#mCont {
+  position: relative;
+}
+
+#movies {
+  height: 100%;
+  overflow-y: scroll;
+  position: absolute;
+}
+#detalhes {
+  margin: 0 auto;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.info {
+  display: flex;
+  align-items: end;
+  gap: 20px;
+}
+
+#data {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+#data > h2 {
+  text-align: left;
+}
+#poster {
+  overflow: hidden;
+  border-radius: 20px;
+  aspect-ratio: 2/3;
+  width: 50%;
+}
+
+#poster > img {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  #movies {
+    position: static;
+    overflow-y: visible;
+  }
+  #detalhes {
+    width: 80%;
+    flex-flow: column;
+  }
+}
+
+#carouselExampleCaptions {
+  width: 80%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  height: 100%;
+}

@@ -5,11 +5,9 @@ window.onload = async () => {
     const params = new URLSearchParams(location.search);
     const id = params.get("id");
 
-    // Busca todos os filmes
     const response = await fetch("http://localhost:3000/movieList");
     const data = await response.json();
 
-    // Encontra o filme pelo ID
     const movie = data.find((movie) => movie.id == id);
 
     if (!movie) {
